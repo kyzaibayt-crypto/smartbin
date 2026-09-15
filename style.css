@@ -1,0 +1,595 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f5;
+    color: #17221c;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e3e8e5;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 700;
+    color: #17221c;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #465149;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #2e9d55;
+}
+
+.login-btn {
+    border: none;
+
+    background: #17221c;
+    color: #ffffff;
+
+    padding: 11px 22px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background: #2e9d55;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding: 80px 10%;
+
+    background: linear-gradient(
+        135deg,
+        #e7f6eb 0%,
+        #ffffff 100%
+    );
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 58px;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+.hero-text p {
+    max-width: 540px;
+
+    color: #5e6962;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   MAIN BUTTON
+   ========================= */
+
+.main-btn {
+    border: none;
+
+    background: #2e9d55;
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: #247e44;
+
+    transform: translateY(-2px);
+}
+
+.main-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   HERO BIN CARD
+   ========================= */
+
+.hero-card {
+    width: 340px;
+
+    background: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s;
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+}
+
+.bin-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+.hero-card h3 {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+}
+
+.hero-card p {
+    margin: 12px 0;
+    color: #59645d;
+}
+
+
+/* =========================
+   PROGRESS BAR
+   ========================= */
+
+.progress {
+    width: 100%;
+
+    height: 12px;
+
+    background: #e4e9e6;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background: #2e9d55;
+
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.status {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-top: 8px;
+}
+
+.available {
+    color: #2e9d55;
+}
+
+
+/* =========================
+   BINS SECTION
+   ========================= */
+
+.bins-section {
+    padding: 80px 10%;
+}
+
+.bins-section h2,
+.about h2 {
+    font-size: 36px;
+
+    margin-bottom: 28px;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================
+   FILTERS
+   ========================= */
+
+.filters {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 35px;
+}
+
+.filter {
+    border: 1px solid #d9e0dc;
+
+    background: #ffffff;
+
+    color: #39443d;
+
+    padding: 10px 17px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.filter:hover {
+    border-color: #2e9d55;
+
+    color: #2e9d55;
+}
+
+.filter.active {
+    background: #17221c;
+
+    border-color: #17221c;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   BIN CARDS
+   ========================= */
+
+.bins {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.bin {
+    background: #ffffff;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.05);
+
+    transition: 0.25s;
+
+    border: 1px solid transparent;
+}
+
+.bin:hover {
+    transform: translateY(-4px);
+
+    border-color: #dce8df;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.bin h3 {
+    font-size: 18px;
+
+    margin-bottom: 12px;
+}
+
+.bin-location {
+    color: #69736d;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   BIN PROGRESS
+   ========================= */
+
+.bin-progress {
+    width: 100%;
+
+    height: 10px;
+
+    background: #e6eae8;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 10px;
+}
+
+.bin-progress-fill {
+    height: 100%;
+
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   COLORS
+   ========================= */
+
+.green {
+    background: #36a85c;
+}
+
+.yellow {
+    background: #e1ad28;
+}
+
+.red {
+    background: #df4b4b;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about {
+    padding: 80px 10%;
+
+    background: #ffffff;
+}
+
+.steps {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+.step {
+    padding: 30px;
+
+    background: #f4f7f5;
+
+    border-radius: 18px;
+
+    transition: 0.2s;
+}
+
+.step:hover {
+    transform: translateY(-4px);
+
+    background: #edf5ef;
+}
+
+.step div {
+    font-size: 42px;
+
+    margin-bottom: 17px;
+}
+
+.step h3 {
+    font-size: 19px;
+
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #68736c;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background: #17221c;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    padding: 28px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        padding: 60px 7%;
+    }
+
+    .hero-text h1 {
+        font-size: 45px;
+    }
+
+    .bins-section,
+    .about {
+        padding: 60px 7%;
+    }
+
+    .bins {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .login-btn {
+        padding: 9px 15px;
+    }
+
+
+    .hero {
+        min-height: auto;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 55px 6%;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-card {
+        width: 100%;
+
+        max-width: 340px;
+    }
+
+
+    .bins-section,
+    .about {
+        padding: 55px 6%;
+    }
+
+    .bins-section h2,
+    .about h2 {
+        font-size: 30px;
+    }
+
+
+    .bins {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .filter {
+        width: 100%;
+    }
+}
