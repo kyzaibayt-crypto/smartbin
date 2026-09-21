@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Регистрация — SmartBin</title>
+
+    <link rel="stylesheet" href="style-register.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html" class="logo">
+            <span>♻️</span>
+            SmartBin
+        </a>
+
+        <nav>
+            <a href="index.html#bins">Мусорки</a>
+            <a href="index.html#about">О проекте</a>
+            <a href="login.html" class="login-btn">
+                Войти
+            </a>
+        </nav>
+
+    </header>
+
+
+    <main class="register-page">
+
+        <div class="register-card">
+
+            <div class="register-icon">
+                🌱
+            </div>
+
+            <span class="register-label">
+                SMARTBIN
+            </span>
+
+            <h1>
+                Создать аккаунт
+            </h1>
+
+            <p class="register-description">
+                Зарегистрируйтесь, чтобы пользоваться
+                возможностями SmartBin.
+            </p>
+
+
+            <form id="registerForm">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Имя
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Введите ваше имя"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Электронная почта
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@gmail.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Пароль
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Минимум 6 символов"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Повторите пароль
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Повторите пароль"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="register-button">
+
+                    Зарегистрироваться
+
+                </button>
+
+            </form>
+
+
+            <div class="login-link">
+
+                Уже есть аккаунт?
+
+                <a href="login.html">
+                    Войти
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            ♻️ SmartBin
+        </div>
+
+        <p>
+            Умные решения для чистого города.
+        </p>
+
+        <span>
+            © 2026 SmartBin Project
+        </span>
+
+    </footer>
+
+
+    <script src="script-register.js"></script>
+
+</body>
+
+</html>

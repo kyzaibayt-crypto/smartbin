@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Вход — SmartBin</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html" class="logo">
+            <span>♻️</span>
+            SmartBin
+        </a>
+
+        <a href="index.html" class="login-btn">
+            На главную
+        </a>
+
+    </header>
+
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                ♻️
+            </div>
+
+            <span class="section-label">
+                SMARTBIN
+            </span>
+
+            <h1>
+                С возвращением!
+            </h1>
+
+            <p class="login-description">
+                Войдите в свой аккаунт, чтобы управлять
+                вашими SmartBin.
+            </p>
+
+
+            <form id="loginForm">
+
+                <label for="email">
+                    Электронная почта
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@mail.com"
+                    required
+                >
+
+
+                <label for="password">
+                    Пароль
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Введите пароль"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="main-btn login-submit">
+
+                    Войти
+
+                </button>
+
+            </form>
+
+
+            <p class="register-text">
+                Нет аккаунта?
+                <a href="register.html">
+                    Зарегистрироваться
+                </a>
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            ♻️ SmartBin
+        </div>
+
+        <p>
+            Умные решения для чистого города.
+        </p>
+
+        <span>
+            © 2026 SmartBin Project
+        </span>
+
+    </footer>
+
+
+    <script>
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Функция входа будет подключена позже."
+                );
+
+            });
+
+    </script>
+
+</body>
+
+</html>
