@@ -86,12 +86,16 @@
                 </div>
 
 
-                <h3>
+                <h3 id="heroBinName">
                     SmartBin №001
                 </h3>
 
-                <p class="location">
+                <p
+                    class="location"
+                    id="heroBinLocation">
+
                     📍 ул. Абая, 25
+
                 </p>
 
 
@@ -101,7 +105,7 @@
                         Сейчас заполнено
                     </span>
 
-                    <strong>
+                    <strong id="heroBinFill">
                         42%
                     </strong>
 
@@ -112,14 +116,18 @@
 
                     <div
                         class="progress-fill"
-                        style="width: 42%">
+                        id="heroProgress">
                     </div>
 
                 </div>
 
 
-                <div class="card-status">
-                    🟢 Здесь ещё есть место
+                <div
+                    class="card-status"
+                    id="heroBinStatus">
+
+                    🟢 Можно выбрасывать
+
                 </div>
 
             </div>
@@ -135,21 +143,17 @@
 
             <div class="section-heading">
 
-                <div>
+                <span class="section-label">
+                    SMARTBINS
+                </span>
 
-                    <span class="section-label">
-                        SMARTBINS
-                    </span>
+                <h2>
+                    Мусорки рядом
+                </h2>
 
-                    <h2>
-                        Мусорки рядом
-                    </h2>
-
-                    <p>
-                        Выберите удобное место для выброса мусора.
-                    </p>
-
-                </div>
+                <p>
+                    Выберите удобное место для выброса мусора.
+                </p>
 
             </div>
 
@@ -161,25 +165,33 @@
                 <button
                     class="filter active"
                     onclick="filterBins('all', this)">
+
                     Все
+
                 </button>
 
                 <button
                     class="filter"
                     onclick="filterBins('available', this)">
+
                     🟢 Есть место
+
                 </button>
 
                 <button
                     class="filter"
                     onclick="filterBins('almost', this)">
+
                     🟡 Почти заполнены
+
                 </button>
 
                 <button
                     class="filter"
                     onclick="filterBins('full', this)">
+
                     🔴 Заполнены
+
                 </button>
 
             </div>
