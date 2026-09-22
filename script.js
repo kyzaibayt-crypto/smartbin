@@ -180,15 +180,15 @@ function filterBins(status, button) {
     const filteredBins = bins.filter(function(bin) {
 
         if (status === "available") {
-            return bin.fill < 70;
+            return bin.fill < 50;
         }
 
         if (status === "almost") {
-            return bin.fill >= 70 && bin.fill < 90;
+            return bin.fill >= 50 && bin.fill < 75;
         }
 
         if (status === "full") {
-            return bin.fill >= 90;
+            return bin.fill >= 75;
         }
 
         return true;
