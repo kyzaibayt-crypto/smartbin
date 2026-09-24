@@ -12,347 +12,308 @@
 
 <body>
 
-    <!-- HEADER -->
+<header class="header">
 
-    <header>
+    <a href="index.html" class="logo">
+        ♻️ SmartBin
+    </a>
 
-        <a href="index.html" class="logo">
-            <span>♻️</span>
-            SmartBin
-        </a>
+    <nav>
+        <a href="#bins">Мусорки</a>
+        <a href="#about">Как это работает</a>
+    </nav>
 
-        <nav>
-            <a href="#bins">Мусорки</a>
-            <a href="#about">Как это работает</a>
-        </nav>
+    <div class="account-area">
 
-        <a href="login.html" class="login-btn">
+        <a
+            href="login.html"
+            class="login-link"
+            id="loginButton">
             Войти
         </a>
 
-    </header>
+        <div
+            class="account-menu"
+            id="accountMenu">
 
+            <button
+                class="account-button"
+                id="accountButton">
 
-    <!-- MAIN -->
+                <span class="account-icon">
+                    👤
+                </span>
 
-    <main>
+                <span id="accountName">
+                    Аккаунт
+                </span>
 
-        <!-- HERO -->
+                <span class="account-arrow">
+                    ▾
+                </span>
 
-        <section class="hero">
+            </button>
 
-            <div class="hero-text">
+            <div
+                class="account-dropdown"
+                id="accountDropdown">
 
-                <div class="small-label">
-                    🌱 Чистый город начинается с нас
+                <div class="account-info">
+
+                    <div class="account-avatar">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <strong id="dropdownName">
+                            Пользователь
+                        </strong>
+
+                        <span id="dropdownEmail">
+                            email
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <h1>
-                    Выбросить мусор
-                    <span>стало проще.</span>
-                </h1>
-
-                <p>
-                    Найдите ближайшую SmartBin и заранее
-                    узнайте, есть ли в ней место для вашего мусора.
-                </p>
+                <div class="account-divider"></div>
 
                 <button
-                    class="main-btn"
-                    onclick="findNearest()">
+                    class="logout-button"
+                    id="logoutButton">
 
-                    📍 Найти ближайшую мусорку
+                    Выйти
 
                 </button>
 
             </div>
 
+        </div>
 
-            <!-- HERO CARD -->
+    </div>
 
-            <div class="hero-card">
-
-                <div class="card-top">
-
-                    <div class="bin-icon">
-                        🗑️
-                    </div>
-
-                    <div class="online">
-                        <span></span>
-                        Онлайн
-                    </div>
-
-                </div>
+</header>
 
 
-                <h3 id="heroBinName">
-                    SmartBin №001
-                </h3>
+<main>
 
-                <p
-                    class="location"
-                    id="heroBinLocation">
+    <!-- HERO -->
 
-                    📍 ул. Абая, 25
+    <section class="hero">
 
-                </p>
+        <div class="hero-content">
 
-
-                <div class="fill-info">
-
-                    <span>
-                        Сейчас заполнено
-                    </span>
-
-                    <strong id="heroBinFill">
-                        42%
-                    </strong>
-
-                </div>
-
-
-                <div class="progress">
-
-                    <div
-                        class="progress-fill"
-                        id="heroProgress">
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="card-status"
-                    id="heroBinStatus">
-
-                    🟢 Можно выбрасывать
-
-                </div>
-
+            <div class="hero-label">
+                🌱 Чистый город начинается с нас
             </div>
 
-        </section>
+            <h1>
+                Выбросить мусор<br>
+                стало проще.
+            </h1>
+
+            <p>
+                SmartBin помогает находить ближайшие умные
+                мусорки и показывает их заполненность
+                в реальном времени.
+            </p>
+
+            <a
+                href="#bins"
+                class="hero-button">
+
+                Найти мусорку
+
+            </a>
+
+        </div>
+
+        <div class="hero-bin">
+
+            <div class="big-bin">
+                🗑️
+            </div>
+
+        </div>
+
+    </section>
 
 
-        <!-- BINS -->
+    <!-- BINS -->
 
-        <section
-            id="bins"
-            class="bins-section">
+    <section
+        class="bins-section"
+        id="bins">
 
-            <div class="section-heading">
+        <div class="section-header">
+
+            <div>
 
                 <span class="section-label">
-                    SMARTBINS
+                    SMARTBIN
                 </span>
 
                 <h2>
                     Мусорки рядом
                 </h2>
 
-                <p>
-                    Выберите удобное место для выброса мусора.
-                </p>
-
             </div>
 
+            <p>
+                Проверяйте заполненность перед тем,
+                как выбросить мусор.
+            </p>
 
-            <!-- FILTERS -->
-
-            <div class="filters">
-
-                <button
-                    class="filter active"
-                    onclick="filterBins('all', this)">
-
-                    Все
-
-                </button>
-
-                <button
-                    class="filter"
-                    onclick="filterBins('available', this)">
-
-                    🟢 Есть место
-
-                </button>
-
-                <button
-                    class="filter"
-                    onclick="filterBins('almost', this)">
-
-                    🟡 Почти заполнены
-
-                </button>
-
-                <button
-                    class="filter"
-                    onclick="filterBins('full', this)">
-
-                    🔴 Заполнены
-
-                </button>
-
-            </div>
-
-
-            <!-- BIN LIST -->
-
-            <div
-                class="bins"
-                id="binList">
-            </div>
-
-        </section>
-
-
-        <!-- ABOUT -->
-
-        <section
-            id="about"
-            class="about">
-
-            <div class="about-heading">
-
-                <span class="section-label">
-                    КАК ЭТО РАБОТАЕТ
-                </span>
-
-                <h2>
-                    Ничего сложного.
-                </h2>
-
-                <p>
-                    SmartBin помогает выбрасывать мусор удобно,
-                    не прикасаясь к крышке и не тратя время
-                    на поиски свободной урны.
-                </p>
-
-            </div>
-
-
-            <div class="steps">
-
-                <div class="step">
-
-                    <div class="step-number">
-                        01
-                    </div>
-
-                    <div class="step-icon">
-                        📍
-                    </div>
-
-                    <h3>
-                        Найдите
-                    </h3>
-
-                    <p>
-                        Посмотрите на карте или в списке,
-                        где находится ближайшая SmartBin.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">
-                        02
-                    </div>
-
-                    <div class="step-icon">
-                        👀
-                    </div>
-
-                    <h3>
-                        Проверьте
-                    </h3>
-
-                    <p>
-                        Узнайте, насколько она заполнена
-                        и можно ли ей пользоваться.
-                    </p>
-
-                </div>
-
-
-                <div class="step">
-
-                    <div class="step-number">
-                        03
-                    </div>
-
-                    <div class="step-icon">
-                        ♻️
-                    </div>
-
-                    <h3>
-                        Выбросьте
-                    </h3>
-
-                    <p>
-                        Подойдите к урне. Крышка откроется
-                        автоматически, а затем закроется сама.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROJECT -->
-
-        <section class="project">
-
-            <div class="project-content">
-
-                <div class="project-icon">
-                    🌱
-                </div>
-
-                <div>
-
-                    <h2>
-                        Меньше мусора вокруг.
-                    </h2>
-
-                    <p>
-                        Больше удобства для каждого.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="footer-logo">
-            ♻️ SmartBin
         </div>
 
-        <p>
-            Умные решения для чистого города.
-        </p>
 
-        <span>
-            © 2026 SmartBin Project
-        </span>
+        <div class="filters">
 
-    </footer>
+            <button
+                class="filter-button active"
+                data-status="all">
+
+                Все
+
+            </button>
+
+            <button
+                class="filter-button"
+                data-status="available">
+
+                Можно выбрасывать
+
+            </button>
+
+            <button
+                class="filter-button"
+                data-status="almost">
+
+                Почти заполнена
+
+            </button>
+
+            <button
+                class="filter-button"
+                data-status="full">
+
+                Заполнена
+
+            </button>
+
+        </div>
 
 
-    <script src="script.js"></script>
+        <div
+            class="bins-grid"
+            id="binsContainer">
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section
+        class="about-section"
+        id="about">
+
+        <div class="about-content">
+
+            <span class="section-label">
+                КАК ЭТО РАБОТАЕТ
+            </span>
+
+            <h2>
+                Умная мусорка без лишних действий
+            </h2>
+
+            <p>
+                SmartBin использует датчик движения.
+                Когда человек подходит к мусорке,
+                крышка автоматически открывается.
+                После выбрасывания мусора она
+                закрывается самостоятельно.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <span>01</span>
+
+                <h3>
+                    Подойдите
+                </h3>
+
+                <p>
+                    Датчик движения обнаруживает человека.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <span>02</span>
+
+                <h3>
+                    Выбросьте мусор
+                </h3>
+
+                <p>
+                    Крышка автоматически открывается.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <span>03</span>
+
+                <h3>
+                    Крышка закрывается
+                </h3>
+
+                <p>
+                    После использования мусорка закрывается.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        ♻️ SmartBin
+    </div>
+
+    <p>
+        Умные решения для чистого города.
+    </p>
+
+    <span>
+        © 2026 SmartBin Project
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+<script src="account.js"></script>
 
 </body>
 
