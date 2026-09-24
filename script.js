@@ -1,116 +1,106 @@
+// =====================================================
+// SMARTBIN — МУСОРКИ
+// =====================================================
+
 const bins = [
+
     {
         id: 1,
         location: "ул. Абая, 25",
-        fill: 42
+        fill: 42,
+        status: "available"
     },
+
     {
         id: 2,
         location: "ул. Каныша Сатпаева, 14",
-        fill: 68
+        fill: 68,
+        status: "almost"
     },
+
     {
         id: 3,
         location: "Центральный парк",
-        fill: 91
+        fill: 91,
+        status: "full"
     },
+
     {
         id: 4,
         location: "ул. Горького, 7",
-        fill: 27
+        fill: 27,
+        status: "available"
     },
+
     {
         id: 5,
         location: "Школьная улица, 12",
-        fill: 55
+        fill: 55,
+        status: "almost"
     },
+
     {
         id: 6,
         location: "Площадь города",
-        fill: 97
+        fill: 97,
+        status: "full"
     }
+
 ];
 
 
-// =========================
-// ОПРЕДЕЛЕНИЕ СТАТУСА
-// =========================
+// =====================================================
+// ТЕКСТ СТАТУСА
+// =====================================================
 
-function getStatusText(fill) {
+function getStatusText(status) {
 
-    if (fill < 50) {
+    if (status === "available") {
         return "🟢 Можно выбрасывать";
     }
 
-    if (fill >= 50 && fill < 75) {
+    if (status === "almost") {
         return "🟡 Почти заполнена";
     }
 
-    return "🔴 Заполнена";
+    if (status === "full") {
+        return "🔴 Заполнена";
+    }
+
+    return "⚪ Неизвестно";
 }
 
 
-// =========================
-// ОПРЕДЕЛЕНИЕ ЦВЕТА
-// =========================
+// =====================================================
+// ЦВЕТ ЗАПОЛНЕННОСТИ
+// =====================================================
 
-function getColor(fill) {
+function getProgressClass(status) {
 
-    if (fill < 50) {
-        return "green";
+    if (status === "available") {
+        return "progress-green";
     }
 
-    if (fill >= 50 && fill < 75) {
-        return "yellow";
+    if (status === "almost") {
+        return "progress-yellow";
     }
 
-    return "red";
+    if (status === "full") {
+        return "progress-red";
+    }
+
+    return "";
 }
 
 
-// =========================
-// ВЕРХНЯЯ КАРТОЧКА
-// =========================
-
-function updateHeroBin(bin) {
-
-    const name = document.getElementById("heroBinName");
-    const location = document.getElementById("heroBinLocation");
-    const fill = document.getElementById("heroBinFill");
-    const progress = document.getElementById("heroProgress");
-    const status = document.getElementById("heroBinStatus");
-
-    if (!name || !location || !fill || !progress || !status) {
-        return;
-    }
-
-    name.textContent =
-        `SmartBin №${String(bin.id).padStart(3, "0")}`;
-
-    location.textContent =
-        `📍 ${bin.location}`;
-
-    fill.textContent =
-        `${bin.fill}%`;
-
-    progress.style.width =
-        `${bin.fill}%`;
-
-    progress.className =
-        `progress-fill ${getColor(bin.fill)}`;
-
-    status.textContent =
-        getStatusText(bin.fill);
-}
-
-
-// =========================
+// =====================================================
 // ПОКАЗ МУСОРОК
-// =========================
+// =====================================================
 
 function showBins(list) {
 
-    const container = document.getElementById("binList");
+    const container =
+        document.getElementById("binsContainer");
 
     if (!container) {
         return;
@@ -118,15 +108,31 @@ function showBins(list) {
 
     container.innerHTML = "";
 
-    list.forEach(function(bin) {
 
-        const binElement = document.createElement("div");
+    if (list.length === 0) {
 
-        binElement.className = "bin";
+        container.innerHTML = `
+            <p>
+                Мусорок с таким статусом пока нет.
+            </p>
+        `;
 
-        binElement.innerHTML = `
+        return;
+    }
+
+
+    list.forEach(function (bin) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "bin-card";
+
+
+        card.innerHTML = `
+
             <h3>
-                🗑️ SmartBin №${String(bin.id).padStart(3, "0")}
+                🗑️ SmartBin #${bin.id}
             </h3>
 
             <div class="bin-location">
@@ -134,87 +140,90 @@ function showBins(list) {
             </div>
 
             <div class="bin-progress">
+
                 <div
-                    class="bin-progress-fill ${getColor(bin.fill)}"
+                    class="bin-progress-fill ${getProgressClass(bin.status)}"
                     style="width: ${bin.fill}%">
                 </div>
+
             </div>
 
-            <p>
-                Заполненность: <b>${bin.fill}%</b>
-            </p>
+            <div class="bin-bottom">
 
-            <p class="status">
-                ${getStatusText(bin.fill)}
-            </p>
+                <span class="fill-value">
+                    Заполненность: ${bin.fill}%
+                </span>
+
+                <span class="status">
+                    ${getStatusText(bin.status)}
+                </span>
+
+            </div>
+
         `;
 
-        container.appendChild(binElement);
+
+        container.appendChild(card);
+
     });
+
 }
 
 
-// =========================
+// =====================================================
 // ФИЛЬТРЫ
-// =========================
+// =====================================================
 
-function filterBins(status, button) {
-
-    const buttons = document.querySelectorAll(".filter");
-
-    buttons.forEach(function(btn) {
-        btn.classList.remove("active");
-    });
-
-    if (button) {
-        button.classList.add("active");
-    }
+const filterButtons =
+    document.querySelectorAll(".filter-button");
 
 
-    if (status === "all") {
-        showBins(bins);
-        return;
-    }
+filterButtons.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            filterButtons.forEach(function (btn) {
+
+                btn.classList.remove("active");
+
+            });
 
 
-    const filteredBins = bins.filter(function(bin) {
+            button.classList.add("active");
 
-        if (status === "available") {
-            return bin.fill < 50;
+
+            const status =
+                button.dataset.status;
+
+
+            if (status === "all") {
+
+                showBins(bins);
+
+                return;
+            }
+
+
+            const filteredBins =
+                bins.filter(function (bin) {
+
+                    return bin.status === status;
+
+                });
+
+
+            showBins(filteredBins);
+
         }
-
-        if (status === "almost") {
-            return bin.fill >= 50 && bin.fill < 75;
-        }
-
-        if (status === "full") {
-            return bin.fill >= 75;
-        }
-
-        return true;
-    });
-
-
-    showBins(filteredBins);
-}
-
-
-// =========================
-// БЛИЖАЙШАЯ МУСОРКА
-// =========================
-
-function findNearest() {
-
-    alert(
-        "📍 Поиск ближайшей мусорки будет доступен после подключения GPS и карты."
     );
-}
+
+});
 
 
-// =========================
+// =====================================================
 // ЗАПУСК
-// =========================
+// =====================================================
 
 showBins(bins);
-
-updateHeroBin(bins[0]);
